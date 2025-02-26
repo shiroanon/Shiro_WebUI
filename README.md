@@ -5,7 +5,7 @@ A Comfy Frontent For ~~ComfyUI~~ ShiroUI
 
 
 ## TODO - Everything 
-- [ ] Shift To Latent2RGB for making compaitible with Comfy
+- [$] Shift To Latent2RGB for making compaitible with Comfy
 - [ ] Add Workflows And Interfaces for Text to Img (The Easyrun UI)
 - [ ] Make A Advanced Interface with Text2Img , Img2Img , And Audio Support including Advanced model patches like FreeUv2  , ClipAttention 
 - [ ] Fix The CivitAI gallary interface And add model browser support 
