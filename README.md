@@ -1,5 +1,5 @@
 A Comfy Frontent For ~~ComfyUI~~ ShiroUI 
-# Current Dependencies - ShiroUI , Until i figure out how to save Latent2RGBimg like 13 Do 
+# Current Dependencies - NOTHING 
 
 ## Especial Thanks - Comfy To Python Repo 
 
