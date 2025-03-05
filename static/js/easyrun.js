@@ -44,55 +44,69 @@ async function generateImage(prompt) {
         const updatePreview = () => {
             streamedImage.src = `${comfyUrl}/stream/image?t=${Date.now()}`;
         };
-        streamInterval = setInterval(updatePreview, 1000);
+        streamInterval = setInterval(updatePreview, 900);
         updatePreview();
     } catch (err) {
         console.error('Failed to start streaming:', err);
     }
 
     try {
-        const response = await fetch('/generate', {
+        const response = await fetch('/gen', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ positive_prompt: prompt })
         });
 
         const data = await response.json();
-        
-        if (data.status === 'success') {
-            data.images.forEach(imageUrl => {
-const imgMessage = document.createElement('div');
-imgMessage.className = 'message image-message';
+        console.log('API Response:', data); // Debugging log
 
-const img = document.createElement('img');
-img.src = imageUrl;
-img.alt = "Generated image";
+        if (Array.isArray(data.img) && data.img.length > 0) {
+            console.log('Received images:', data.img);
 
-// Add click handler for fullscreen
-img.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-        const container = document.createElement('div');
-        container.className = 'fullscreen';
-        const clone = img.cloneNode();
-        container.appendChild(clone);
-        document.body.appendChild(container);
-        
-        container.onclick = () => container.remove();
-    }
-});
-imgMessage.appendChild(img);
+            data.img.forEach(imageUrl => {
+                if (!imageUrl) {
+                    console.error('Invalid image URL:', imageUrl);
+                    return;
+                }
 
-const timestamp = document.createElement('div');
-timestamp.className = 'timestamp';
-timestamp.textContent = new Date().toLocaleTimeString();
+                const imgMessage = document.createElement('div');
+                imgMessage.className = 'message image-message';
 
-imgMessage.appendChild(timestamp);
-chat.appendChild(imgMessage);
-});
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = "Generated image";
+                img.loading = "lazy";
+
+                // Debugging log for image loading
+                img.onload = () => console.log(`Image loaded: ${imageUrl}`);
+                img.onerror = () => console.error(`Failed to load image: ${imageUrl}`);
+
+                // Add click handler for fullscreen
+                img.addEventListener('click', () => {
+                    if (!document.fullscreenElement) {
+                        const container = document.createElement('div');
+                        container.className = 'fullscreen';
+                        const clone = img.cloneNode();
+                        container.appendChild(clone);
+                        document.body.appendChild(container);
+                        container.onclick = () => container.remove();
+                    }
+                });
+
+                imgMessage.appendChild(img);
+
+                const timestamp = document.createElement('div');
+                timestamp.className = 'timestamp';
+                timestamp.textContent = new Date().toLocaleTimeString();
+
+                imgMessage.appendChild(timestamp);
+                chat.appendChild(imgMessage);
+            });
         } else {
-            addMessage(`Error: ${data.message}`, false);
+            addMessage(`Error: ${data.message || 'Unexpected API response'}`, false);
         }
     } catch (error) {
+        console.error('Fetch error:', error);
         addMessage(`Error: ${error.message}`, false);
     } finally {
         // Clean up streaming
@@ -102,7 +116,8 @@ chat.appendChild(imgMessage);
     }
 }
 
-// Event Listeners
+
+
 sendBtn.addEventListener('click', async () => {
     const prompt = promptInput.value.trim();
     if (!prompt) return;
@@ -111,6 +126,8 @@ sendBtn.addEventListener('click', async () => {
     promptInput.value = '';
     await generateImage(prompt);
 });
+
+
 
 interruptBtn.addEventListener('click', async () => {
     try {

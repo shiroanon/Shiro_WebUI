@@ -1,18 +1,18 @@
 from flask import Flask, render_template, request, jsonify
 import utils
 import json
+import requests
 
-import logging
 from flask_cors import CORS
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
+url1="https://ccc4f9ca5c632abf6a9c5bedcd453855.loophole.site/z"
 
-
+@app.route("/url")
+def url():
+    return jsonify({"url":url1})
 
 @app.route("/")
 def index():
@@ -26,9 +26,20 @@ def easyrun():
 def gallery():
     return render_template("gallery.html")
 
-@app.route("/generate", methods=["POST"])
+@app.route("/gen", methods=["POST"])
 def generate_image():
     data = request.get_json()
+    prompt=data["positive_prompt"]
+    o=utils.clean_prompt(prompt)
+    
+    response = requests.post(url1+"generate", json=o)
+    lit=response.json()
+    print(lit)
+    kk=[]
+    for i in lit:
+        kk.append(url1+i)
+    return jsonify({"img":kk})    
+
 if __name__ == "__main__":
 
     app.run(

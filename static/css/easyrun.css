@@ -180,11 +180,13 @@
   }
   
   #streamed-image {
-    max-width: 60vw;
-    max-height: 60vh;
+    max-width: 80vw;
+    max-height: 80vh;
     border-radius: 12px;
     object-fit: contain;
+    height: 300px;
   }
+
   .fullscreen {
     position: fixed;
     top: 0;
