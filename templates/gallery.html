@@ -1,108 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="dark" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CivitAI Image Gallery</title>
-    <link rel="stylesheet" href="/static/css/civitai.css">
+    <title>Civitai Image Browser</title>
+    <script src="/static/js/tailwind-min.js"></script>
+    <script>
+        // Tailwind Dark Mode Configuration
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 150%; /* 2:3 aspect ratio */
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .image-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 100;
+            background: rgba(0,0,0,0.9);
+            padding-top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .image-container.fullscreen img {
+            position: relative;
+            width: auto;
+            height: auto;
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+        .prompt-copy {
+            transition: all 0.2 ease-in-out;
+        }
+        .truncate-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* Previous styles remain the same */
+        .hamburger-line {
+            transition: all 0.3s ease-in-out;
+        }
+        .hamburger-active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger-active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white flex">
     <!-- Sidebar -->
-    <div class="sidebar hidden">
-        <div class="sidebar-header">
-            <h2>Filters & Settings</h2>
-            <button class="close-sidebar" aria-label="Close Sidebar">×</button>
-        </div>
-        
-        <div class="filters">
-            <div class="filter-group">
-                <h3>Content Filters</h3>
-                <div class="form-group">
-                    <label for="nsfw">NSFW Level:</label>
-                    <select id="nsfw">
-                        <option value="">All</option>
-                        <option value="None">None</option>
-                        <option value="Soft">Soft</option>
-                        <option value="Mature">Mature</option>
-                        <option value="X">X</option>
-                    </select>
-                </div>
+    <div id="sidebar" class="fixed md:static z-40 w-64 bg-white dark:bg-gray-800 p-4 shadow-lg h-screen overflow-y-auto 
+                            transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <h2 class="text-xl font-bold mb-4 dark:text-white">Filters</h2>
+        <form method="get" class="space-y-4">
+            <div>
+                <label class="block mb-2 dark:text-gray-300">NSFW Filter</label>
+                <select name="nsfw" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <option value="None" {% if params.nsfw == 'None' %}selected{% endif %}>None</option>
+                    <option value="Soft" {% if params.nsfw == 'Soft' %}selected{% endif %}>Soft</option>
+                    <option value="Mature" {% if params.nsfw == 'Mature' %}selected{% endif %}>Mature</option>
+                    <option value="X" {% if params.nsfw == 'X' %}selected{% endif %}>X</option>
+                </select>
             </div>
-
-            <div class="filter-group">
-                <h3>Pagination</h3>
-                <div class="form-group">
-                    <label for="limit">Results per Page (1-200):</label>
-                    <input type="number" id="limit" min="1" max="200" value="100">
-                </div>
+            
+            <div>
+                <label class="block mb-2 dark:text-gray-300">Sort By</label>
+                <select name="sort" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <option value="Newest" {% if params.sort == 'Newest' %}selected{% endif %}>Newest</option>
+                    <option value="Most Reactions" {% if params.sort == 'Most Reactions' %}selected{% endif %}>Most Reactions</option>
+                    <option value="Most Comments" {% if params.sort == 'Most Comments' %}selected{% endif %}>Most Comments</option>
+                </select>
             </div>
-
-            <div class="filter-group">
-                <h3>Sorting</h3>
-                <div class="form-group">
-                    <label for="sort">Sort By:</label>
-                    <select id="sort">
-                        <option value="Newest">Newest</option>
-                        <option value="Most Reactions">Most Reactions</option>
-                        <option value="Most Comments">Most Comments</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="period">Time Period:</label>
-                    <select id="period">
-                        <option value="AllTime">All Time</option>
-                        <option value="Day">Today</option>
-                        <option value="Week">This Week</option>
-                        <option value="Month">This Month</option>
-                        <option value="Year">This Year</option>
-                    </select>
-                </div>
+            
+            <div>
+                <label class="block mb-2 dark:text-gray-300">Period</label>
+                <select name="period" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <option value="AllTime" {% if params.period == 'AllTime' %}selected{% endif %}>All Time</option>
+                    <option value="Year" {% if params.period == 'Year' %}selected{% endif %}>Year</option>
+                    <option value="Month" {% if params.period == 'Month' %}selected{% endif %}>Month</option>
+                    <option value="Week" {% if params.period == 'Week' %}selected{% endif %}>Week</option>
+                    <option value="Day" {% if params.period == 'Day' %}selected{% endif %}>Day</option>
+                </select>
             </div>
-
-            <div class="filter-group">
-                <h3>Advanced Filters</h3>
-                
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username">
-                </div>
-            </div>
-
-            <button class="apply-filters">Apply Filters</button>
-            <button class="refresh-button">↻ Refresh</button>
-        </div>
+            
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 dark:hover:bg-blue-700 transition">
+                Apply Filters
+            </button>
+        </form>
     </div>
 
     <!-- Main Content -->
-    <div class="container">
-        <button class="toggle-sidebar" aria-label="Toggle Sidebar">
-            <span class="hamburger">👀</span>
-        </button>
-        
-        <h1>CivitAI Image Gallery</h1>
-        <!-- Content will be injected here by JavaScript -->
+    <div class="flex-1 p-6 overflow-y-auto">
+        <!-- Top Bar -->
+        <div class="flex items-center mb-6">
+            <!-- Hamburger Menu -->
+            <button id="hamburger" style="z-index: 100;" class="md:hidden mr-4 focus:outline-none">
+                <div class="hamburger-menu">
+                    <div class="hamburger-line w-6 h-1 bg-gray-600 dark:bg-white mb-1"></div>
+                    <div class="hamburger-line w-6 h-1 bg-gray-600 dark:bg-white mb-1"></div>
+                    <div class="hamburger-line w-6 h-1 bg-gray-600 dark:bg-white"></div>
+                </div>
+            </button>
+
+            <!-- Page Title -->
+            <h1 class="text-3xl font-bold flex-grow text-center dark:text-white">
+                Civitai Image Browser
+            </h1>
+
+            <!-- Dark Mode Toggle -->
+            <button id="dark-mode-toggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                </svg>
+                <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Image Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {% for image in images %}
+            <div class="bg-white dark:bg-gray-800 p-2 rounded shadow dark:shadow-lg">
+                <div class="image-container">
+                    <img src="{{ image.url }}" alt="Civitai Image">
+                </div>
+                
+                <div class="mt-2">
+                    <p class="font-bold dark:text-gray-300">User: {{ image.username }}</p>
+                    <p class="dark:text-gray-400">Likes: {{ image.stats.likeCount }}</p>
+                    
+                    <div class="mt-2">
+                        <h3 class="font-bold dark:text-gray-300">Positive Prompt:</h3>
+                        <div class="bg-gray-100 dark:bg-gray-700 p-2 rounded cursor-pointer prompt-copy truncate-text dark:text-gray-200" 
+                             data-full-prompt="{{ image.meta.prompt }}"
+                             title="{{ image.meta.prompt }}">
+                            {{ image.meta.prompt }}
+                        </div>
+                    </div>
+                    
+                    <div class="mt-2">
+                        <h3 class="font-bold dark:text-gray-300">Negative Prompt:</h3>
+                        <div class="bg-gray-100 dark:bg-gray-700 p-2 rounded cursor-pointer prompt-copy truncate-text dark:text-gray-200" 
+                             data-full-prompt="{{ image.meta.negativePrompt }}"
+                             title="{{ image.meta.negativePrompt }}">
+                            {{ image.meta.negativePrompt }}
+                        </div>
+                    </div>
+                    
+                    <details class="mt-2">
+                        <summary class="dark:text-gray-300">Full Metadata</summary>
+                        <pre class="text-xs overflow-x-auto dark:text-gray-400">{{ image.meta | tojson(indent=2) }}</pre>
+                    </details>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if metadata.nextPage %}
+        <div class="mt-6 text-center">
+            <a href="{{ metadata.nextPage }}" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 dark:hover:bg-blue-700">
+                Next Page
+            </a>
+        </div>
+        {% endif %}
     </div>
 
-    <!-- Background Animation -->
-    <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
-        <defs>
-            <style>
-                @keyframes rotate {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
-                .out-top { animation: rotate 20s linear infinite; transform-origin: 13px 25px; }
-                .in-top { animation: rotate 10s linear infinite reverse; transform-origin: 13px 25px; }
-                .out-bottom { animation: rotate 25s linear infinite; transform-origin: 84px 93px; }
-                .in-bottom { animation: rotate 15s linear infinite reverse; transform-origin: 84px 93px; }
-            </style>
-        </defs>
-        <path class="out-top" fill="#33ffad33" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
-        <path class="in-top" fill="#206dab33" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
-        <path class="out-bottom" fill="#4e1f9133" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
-        <path class="in-bottom" fill="#d4246133" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
-    </svg>
+    <script>
+        // Dark Mode Toggle (previous code remains the same)
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
 
-    <script src="/static/js/script.js"></script>
+        // Check for saved theme preference or default to dark
+        if (localStorage.getItem('color-theme') === 'light' || 
+            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        }
+
+        darkModeToggle.addEventListener('click', function() {
+            // Toggle icons
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            // Toggle dark mode
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Hamburger Menu Toggle (previous code remains the same)
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('hamburger-active');
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Copy prompt functionality (previous code remains the same)
+        document.querySelectorAll('.prompt-copy').forEach(element => {
+            element.addEventListener('click', function() {
+                const fullPrompt = this.getAttribute('data-full-prompt');
+                navigator.clipboard.writeText(fullPrompt).then(() => {
+                    // Temporary visual feedback
+                    this.style.backgroundColor = '#4ade80';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 200);
+                });
+            });
+        });
+
+        // Full-screen image functionality
+        document.querySelectorAll('.image-container img').forEach(img => {
+            img.addEventListener('click', function() {
+                const container = this.closest('.image-container');
+                
+                // Toggle fullscreen
+                if (container.classList.contains('fullscreen')) {
+                    container.classList.remove('fullscreen');
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                } else {
+                    // Close any existing fullscreen images
+                    document.querySelectorAll('.image-container.fullscreen').forEach(fc => {
+                        fc.classList.remove('fullscreen');
+                    });
+                    
+                    container.classList.add('fullscreen');
+                    // Disable scrolling when in fullscreen
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close fullscreen on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const fullscreenImage = document.querySelector('.image-container.fullscreen');
+                if (fullscreenImage) {
+                    fullscreenImage.classList.remove('fullscreen');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    </script>
 </body>
 </html>

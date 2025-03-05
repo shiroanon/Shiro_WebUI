@@ -22,10 +22,24 @@ def index():
 def easyrun():
     return render_template("easyrun.html")
 
-@app.route("/gallery")
+@app.route('/gallery')
 def gallery():
-    return render_template("gallery.html")
-
+    # Fetch images from Civitai API directly
+    params = {
+        'limit': request.args.get('limit', 100),
+        'nsfw': request.args.get('nsfw', 'None'),
+        'sort': request.args.get('sort', 'Newest'),
+        'period': request.args.get('period', 'AllTime'),
+        'page': request.args.get('page', 1)
+    }
+    
+    response = requests.get('https://civitai.com/api/v1/images', params=params)
+    image_data = response.json()
+    
+    return render_template('gallery.html', 
+                           images=image_data['items'], 
+                           metadata=image_data.get('metadata', {}),
+                           params=params)
 @app.route("/gen", methods=["POST"])
 def generate_image():
     data = request.get_json()
