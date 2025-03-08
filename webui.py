@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, jsonify
 import utils
 import json
 import requests
-
+from urllib.parse import urlencode
 from flask_cors import CORS
 
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
-url1="https://ccc4f9ca5c632abf6a9c5bedcd453855.loophole.site/z"
+url1="https://b83e809a5ad63227a030f6632813c3fe.loophole.site/"
 
 @app.route("/url")
 def url():
@@ -17,6 +17,7 @@ def url():
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 @app.route("/easyrun")
 def easyrun():

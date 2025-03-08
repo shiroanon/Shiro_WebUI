@@ -1,0 +1,702 @@
+{
+    "items":[
+      {
+        "id":3036,
+        "name":"CharTurner - Character Turnaround helper for 1.5 AND 2.1!",
+        "description":"<h1>CharTurner</h1><p>Edit: <strong>controlNet</strong> works <strong>great </strong>with this. Charturner keeps the outfit consistent, controlNet openPose keeps the turns under control. </p><p><strong>Three versions,</strong> scroll down to pick the right one for you.</p><p>If you're unsure of what version you are running, it's <em>probably</em> 1.5, as it is more popular, but 2.1 is newer and gaining ground fast.</p><p><strong>Version 2, for 2.0 and 2.1 models<br />Version 2, for 1.5 models<br />Version 1, for 1.5 models</strong></p><p>BONUS: <a target=\"_blank\" rel=\"ugc\" href=\"https://civitai.com/models/7252/charturnerbeta-lora-experimental\">Experimental </a>LORA released<br />used at your own risk. :D (mixes well tho)</p><p>Hey there! I'm a working artist, and I loathe doing character turnarounds, I find it the least fun part of character design. I've been working on an embedding that helps with this process, and, though it's not where I want it to be, I was encouraged to release it under the <a target=\"_blank\" rel=\"ugc\" href=\"https://en.wikipedia.org/wiki/Minimum_viable_product\"><u>MVP</u></a> principle.</p><p>I'm also working on a few more character embeddings, including a head turn around and an expression sheet. They're still way too raw to release tho.</p><p>Is there some type of embedding that would be useful for you? Let me know, i'm having fun making tools to fix all the stuff I hate doing by hand.</p><p>v1 is still a little bit... fiddly.</p><ul><li><p>Sampler: I use DPM++ 2m Karras or DDIM most often.</p></li><li><p>Highres. fix ON for best results</p></li><li><p>landscape orientation will get you more 'turns'; square images tend toward just front and back.</p></li><li><p>I like <a target=\"_blank\" rel=\"ugc\" href=\"https://civitai.com/models/2540/elldreths-stolendreams-mix\"><u>https://civitai.com/models/2540/elldreths-stolendreams-mix</u></a> to make characters in.</p></li><li><p>I use an embedding trained on my own art (smoose) that I will release if people want it? But it's an aesthetic thing, just my own vibe.</p></li><li><p>I didn't really test this in any of the waifu/NAI type models, as I don't usually use them. Looks like it works but it probably has its own special dance.</p></li></ul><p>Things I'm working on for v2: EDIT: <strong>V2 out, see below! (also v2 2.1)</strong></p><ul><li><p>It fights you on style sometimes. I'm adding more various types of art styles to the dataset to combat this. -<strong> V2 has much better styles</strong></p></li><li><p>Open front coats and such tend to be open 'back' on the back view. Adding more types of clothing to the dataset to combat this. - <strong>Still has this problem</strong></p></li><li><p>Tends toward white and 'fit' characters, which isn't useful. Adding more diversity in body and skin tone to the dataset to combat this. - <strong>v2 Much more body and racial diversity added to the set, easier to get different results.</strong></p></li></ul><p>Helps create multiple full body views of a character. The intention is to get at least a front and back, and ideally, a front, 3/4, profile, 1/4 and back versions, in the same outfit.</p><p></p>",
+        "type":"TextualInversion",
+        "poi":false,
+        "nsfw":false,
+        "allowNoCredit":true,
+        "allowCommercialUse":"Rent",
+        "allowDerivatives":true,
+        "allowDifferentLicense":true,
+        "stats":{
+          "downloadCount":56206,
+          "favoriteCount":7433,
+          "commentCount":236,
+          "ratingCount":56,
+          "rating":4.63
+        },
+        "creator":{
+          "username":"mousewrites",
+          "image":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/bdfe115f-4430-4ee7-31bc-eff38f86c500/width=96/mousewrites.jpeg"
+        },
+        "tags":[
+          "character",
+          "consistent character",
+          "turnaround",
+          "model sheet"
+        ],
+        "modelVersions":[
+          {
+            "id":9857,
+            "modelId":3036,
+            "name":"CharTurner V2 - For 2.1",
+            "createdAt":"2023-02-12T22:44:01.442Z",
+            "updatedAt":"2023-03-15T18:58:13.476Z",
+            "trainedWords":[
+              "21charturnerv2"
+            ],
+            "baseModel":"SD 2.1",
+            "earlyAccessTimeFrame":0,
+            "description":"<p>I'm not great at prompting for 2.1 yet, so I\"m sure your prompts will work better with it. Works fantastic with negative embeds. (still collecting links)</p><p><a target=\"_blank\" rel=\"ugc\" href=\"https://civitai.com/models/7728/negativemutation\">https://civitai.com/models/7728/negativemutation</a></p>",
+            "stats":{
+              "downloadCount":25874,
+              "ratingCount":7,
+              "rating":4.29
+            },
+            "files":[
+              {
+                "name":"21charturnerv2.pt",
+                "id":9500,
+                "sizeKB":17.017578125,
+                "type":"Model",
+                "metadata":{
+                  "fp":"fp16",
+                  "size":"full",
+                  "format":"PickleTensor"
+                },
+                "pickleScanResult":"Success",
+                "pickleScanMessage":"No Pickle imports",
+                "virusScanResult":"Success",
+                "scannedAt":"2023-02-12T22:45:53.210Z",
+                "hashes":{
+                  "AutoV2":"F253ABB016",
+                  "SHA256":"F253ABB016C22DD426D6E482F4F8C3960766DE6E4C02F151478BFB98F6985383",
+                  "CRC32":"F500AADD",
+                  "BLAKE3":"E7163C1A3F6B135A3E473CDD749BC1E6F4ED2D1AB43FEB1ACC4BEB1E5C205260"
+                },
+                "downloadUrl":"https://civitai.com/api/download/models/9857",
+                "primary":true
+              }
+            ],
+            "images":[
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/d197481b-1c21-4c14-c7fd-708f838a1000/width=450/96744.jpeg",
+                "nsfw":false,
+                "width":1238,
+                "height":1293,
+                "hash":"UAEVA;?]JoR6+^OaNxxC^jXSWXjF?G$~s.WY",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/e1fe96b4-c2e0-4e8b-094f-051a7e69e700/width=450/95916.jpeg",
+                "nsfw":false,
+                "width":1398,
+                "height":1259,
+                "hash":"U4FrbC^ljH_MFV00IUx[00McbvoM03o}t7xG",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/613ec8af-7010-4b24-38b3-aa4488b9b000/width=450/95915.jpeg",
+                "nsfw":false,
+                "width":992,
+                "height":792,
+                "hash":"U7Du;[xZRj~A-pt7a#Rj0hR+ofNH01WBoJbI",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"640x512",
+                  "seed":2457887243,
+                  "Score":"6.66",
+                  "steps":30,
+                  "prompt":"21CharTurnerV2 (character turnaround:1) of a woman in a greek outfit. Goddess, laurel leaves, rimlight, subsurface scattering",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":4.5,
+                  "resources":[
+  
+                  ],
+                  "Model hash":"5f8c744ab3",
+                  "Hires upscale":"1.55",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"costume variations, outfit variations, sci-fi, tight clothes, skin tight, muscles.",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/478efb4a-d63c-4b0d-8f19-bd60d52fc700/width=450/95914.jpeg",
+                "nsfw":false,
+                "width":1184,
+                "height":792,
+                "hash":"USIEU--:xut6tmofWWoL~UV@ayay-pbHjZbH",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"768x512",
+                  "seed":2930407241,
+                  "Score":"4.53",
+                  "steps":30,
+                  "prompt":"21CharTurnerV2 (character turnaround:1) of a mailman. Male, dark hair, tattoos, blue uniform. multiple views of the same character, Highly detailed,, classicnegative",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":13,
+                  "resources":[
+  
+                  ],
+                  "Model hash":"2c29f8668c",
+                  "Hires upscale":"1.55",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"costume variations, outfit variations, sci-fi, tight clothes, skin tight, muscles., cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry,bad anatomy , liquid body, malformed, mutated, bad proportions, uncoordinated body, unnatural body, disfigured, ugly, gross proportions ,mutation, disfigured, deformed, (mutation), (poorly drawn), wet, legs feet, cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands,",
+                  "Denoising strength":"0.7"
+                }
+              },
+              
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/a70413cb-e2bf-4a92-25e5-ed4786452a00/width=450/95912.jpeg",
+                "nsfw":false,
+                "width":792,
+                "height":792,
+                "hash":"UIHLI%E3D*02~TbcaKEM0M%1$$^%9^WWsm-n",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"512x512",
+                  "seed":4205732814,
+                  "Score":"6.53",
+                  "steps":30,
+                  "prompt":"21CharTurnerV2 character turnaround of young boy as a paperboy, cute adorable little kid, full body, standing, same outfit, concept-art",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":3.5,
+                  "resources":[
+  
+                  ],
+                  "Model hash":"639d0db70f",
+                  "Hires upscale":"1.55",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"costume variations, outfit variations, sci-fi, tight clothes, skin tight, muscles., cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry,bad anatomy , liquid body, malformed, mutated, bad proportions, uncoordinated body, unnatural body, disfigured, ugly, gross proportions ,mutation, disfigured, deformed, (mutation), (poorly drawn), wet, legs feet, cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands,",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/dd2d972b-42d4-45d2-9be5-ce4baf407700/width=450/95911.jpeg",
+                "nsfw":false,
+                "width":792,
+                "height":792,
+                "hash":"U7DI:yoe~V%L^*jsRkof9Zay9ZWC-oofM{WB",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"512x512",
+                  "seed":3743692480,
+                  "Score":"6.4",
+                  "steps":30,
+                  "prompt":"21CharTurnerV2 character turnaround of Native american man in a business suit, full body, standing, same outfit",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":6.5,
+                  "resources":[
+  
+                  ],
+                  "Model hash":"88ecb78256",
+                  "Hires upscale":"1.55",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"child, costume variations, outfit variations, sci-fi, tight clothes, skin tight, muscles., cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry,bad anatomy , liquid body, malformed, mutated, bad proportions, uncoordinated body, unnatural body, disfigured, ugly, gross proportions ,mutation, disfigured, deformed, (mutation), (poorly drawn), wet, legs feet, cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands,, bad_prompt_version2, DreamArtistBADHAND-neg, NG_DeepNegative_V1_75T, Unspeakable-Horrors-Composition-4v",
+                  "Denoising strength":"0.7"
+                }
+              },
+             
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/c8ae65bb-2616-4774-ce6b-4527f20b1b00/width=450/95909.jpeg",
+                "nsfw":false,
+                "width":1184,
+                "height":792,
+                "hash":"UNIE@Nt7%MoftSofofay~pogM{oz_3kCRjof",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"768x512",
+                  "seed":2930407238,
+                  "Score":"4.54",
+                  "steps":30,
+                  "prompt":"21CharTurnerV2 (character turnaround:1) of a mailman. Male, dark hair, tattoos, blue uniform. multiple views of the same character, Highly detailed,, classicnegative",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":13,
+                  "resources":[
+  
+                  ],
+                  "Model hash":"2c29f8668c",
+                  "Hires upscale":"1.55",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"costume variations, outfit variations, sci-fi, tight clothes, skin tight, muscles., cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry,bad anatomy , liquid body, malformed, mutated, bad proportions, uncoordinated body, unnatural body, disfigured, ugly, gross proportions ,mutation, disfigured, deformed, (mutation), (poorly drawn), wet, legs feet, cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands,",
+                  "Denoising strength":"0.7"
+                }
+              }
+           
+            ],
+            "downloadUrl":"https://civitai.com/api/download/models/9857"
+          },
+          {
+            "id":8387,
+            "modelId":3036,
+            "name":"CharTurner V2 - For 1.5",
+            "createdAt":"2023-02-07T03:46:57.500Z",
+            "updatedAt":"2023-03-15T18:58:13.476Z",
+            "trainedWords":[
+              "charturnerv2"
+            ],
+            "baseModel":"SD 1.5",
+            "earlyAccessTimeFrame":0,
+            "description":"<p>2.1 and LoRa versions coming soon.</p><p><strong>Prompt hints</strong>: format something like this: \"A character turnaround of a (X) wearing (Y). \" In some of the prompts the token is spelled differently: due to some technical issues with xformers, I trained this badboy about 40 times, and some of the examples are from those trainings. All the same dataset, I promise.  Just change any weird token names to CharTurnerV2 if you use them.</p><p><strong>Token - \"CharTurnerV2\"</strong> place at the front for stronger effect, place at the end for a weaker effect. Token weighting works too</p><p><strong>Add</strong>:</p><ul><li><p>\"Multiple views of the same character in the same outfit\"</p></li><li><p>Add original CharTurner to mix back in some anime/turns</p></li><li><p>Add charTurner Lora (uploading soon) on top (at very low strength, like .3) to really force the turn. Will affect style.</p></li></ul><p>Next Version: (after the v2 lora and 2.1 versions): Looking for more variety for the data set! Post a review or comment with your best turn around (especially if it was a hard one to get it to do!) and I will use it in the V3 dataset.  </p>",
+            "stats":{
+              "downloadCount":17908,
+              "ratingCount":27,
+              "rating":4.7
+            },
+            "files":[
+              {
+                "name":"charturnerv2.pt",
+                "id":8384,
+                "sizeKB":45.92578125,
+                "type":"Model",
+                "metadata":{
+                  "fp":"fp16",
+                  "size":"full",
+                  "format":"PickleTensor"
+                },
+                "pickleScanResult":"Success",
+                "pickleScanMessage":"No Pickle imports",
+                "virusScanResult":"Success",
+                "scannedAt":"2023-02-07T17:05:48.272Z",
+                "hashes":{
+                  "AutoV2":"A91B570185",
+                  "SHA256":"A91B570185766FF71F242F83D5BEB6D658348900EDB706A2092BA23D6E1E2CF8",
+                  "CRC32":"F874123A",
+                  "BLAKE3":"29322FB6F5E7C19E49F8C1CFEFE0C638BD47CF6BCE0778A7202F175816B4D26C"
+                },
+                "downloadUrl":"https://civitai.com/api/download/models/8387",
+                "primary":true
+              }
+            ],
+            "images":[
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/6b404ab7-c1f1-4c56-8df6-3a5871faa100/width=450/79565.jpeg",
+                "nsfw":false,
+                "width":2026,
+                "height":2714,
+                "hash":"U9D+h~I;R+oeOUEMxa-V00~VNHE200IAkCoz",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/b1a654d8-0ece-4488-1689-1dbf33b3b200/width=450/79564.jpeg",
+                "nsfw":false,
+                "width":2178,
+                "height":2506,
+                "hash":"U797Lo~VM{WX004:t7oe^+%MWBWCWBaxayj]",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/f21f7b7e-7431-484e-5079-4f1c6501f000/width=450/79563.jpeg",
+                "nsfw":false,
+                "width":2472,
+                "height":2711,
+                "hash":"U6CF#COsK5Sd01w]M|jF00xY-Sso~pEht5bH",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/ad240caa-1c18-40d9-de17-2569775d8b00/width=450/79562.jpeg",
+                "nsfw":false,
+                "width":2201,
+                "height":2047,
+                "hash":"U4DIg?hyTKy?00TJVsvf00.8ofEL%fnit7kC",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/035cbefd-7770-424a-4a63-0ffb18dae200/width=450/79561.jpeg",
+                "nsfw":false,
+                "width":1772,
+                "height":2047,
+                "hash":"U7Bf;FxaIo%M00ayt7M{xuRjofof~qt8NGof",
+                "meta":null
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/1a9a83c6-faba-472e-77bf-c6d2f81da700/width=450/79560.jpeg",
+                "nsfw":false,
+                "width":768,
+                "height":536,
+                "hash":"U5H-_a~pE1WW00%LofR*kXD*t7t700D%bHof",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"640x448",
+                  "seed":1133046487,
+                  "Score":"5.4",
+                  "steps":20,
+                  "prompt":"photographic full body character turnaround of beautiful curvy redhead (Hildai17:0.8) (wearing a long white sundress:1.2). Multiple views of the same character in the same outfit. Photorealistic, subsurface scattering, photo real, 8k, hyperreal  <lora:mw_charturn3:.4> (15Charturn_longCap_D:.3)",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":4,
+                  "Clip skip":"2",
+                  "resources":[
+                    {
+                      "name":"mw_charturn3",
+                      "type":"lora",
+                      "weight":0.4
+                    }
+                  ],
+                  "Model hash":"777f034bc3",
+                  "Hires upscale":"1.2",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"naked, nude, boobs, nsfw, nipples, bad_prompt_version2, (((deformed))), blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, (extra_limb), (ugly), (poorly drawn hands), fused fingers, messy drawing, broken legs censor, censored, censor_bar, multiple breasts, (mutated hands and fingers:1.5), (long body :1.3), (mutation, poorly drawn :1.2), black-white, bad anatomy, liquid body, liquid tongue, disfigured, malformed, mutated, anatomical nonsense, text font ui, error, malformed hands, long neck, blurred, lowers, low res, bad anatomy, bad proportions, bad shadow, uncoordinated body, unnatural body, fused breasts, bad breasts, huge breasts, poorly drawn breasts, extra breasts, liquid breasts, heavy breasts, missing breasts, huge haunch, huge thighs, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, fusedears, bad ears, poorly drawn ears, extra ears, liquid ears, heavy ears, missing ears, fused animal ears, bad animal ears, poorly drawn animal ears, extra animal ears, liquid animal ears, heavy animal ears, missing animal ears, text, ui, error, missing fingers, missing limb, fused fingers, one hand with more than 5 fingers, one hand with less than 5 fingers, one hand with more than 5 digit, one hand with less than 5 digit, extra digit, fewer digits, fused digit, missing digit, bad digit, liquid digit, colorful tongue, blacktongue, cropped, watermark, username, blurry, JPEG artifacts, signature, 3D, 3D game, 3D game scene, 3D character, malformed feet, extra feet, bad feet, poorly drawn feet, fused feet, missing feet, extra shoes, bad shoes, fused shoes, more than two shoes, poorly drawn shoes, bad gloves, poorly drawn gloves, fused gloves, bad cum, poorly drawn cum, fused cum, bad hairs, poorly drawn hairs, fused hairs, big muscles, ugly, bad face, fused face, poorly drawn face, cloned face, big face, long face, badeyes, fused eyes poorly drawn eyes, extra eyes, malformed limbs, more than 2 nipples, missing nipples, different nipples, fused nipples, bad nipples, poorly drawnnipples, black nipples, colorful nipples, gross proportions. short arm, (((missing arms))), missing thighs, missing calf, missing legs, mutation, duplicate, morbid, mutilated, poorly drawn hands, more than 1 left hand, more than 1 right hand, deformed, (blurry), disfigured, missing legs, extra arms, extra thighs, more than 2 thighs, extra calf,fused calf, extra legs, bad knee, extra knee, more than 2 legs, bad tails, bad mouth, fused mouth, poorly drawn mouth, bad tongue, tongue within mouth, too long tongue, black tongue, big mouth, cracked mouth, bad mouth, dirty face, dirty teeth, dirty pantie, fused pantie, poorly drawn pantie, fused cloth, poorly drawn cloth, badpantie, yellow teeth, thick lips, bad camel toe, colorful camel toe, bad asshole, poorly drawn asshole, fused asshole, missing asshole, bad anus, bad pussy, bad crotch, bad crotch seam, fused anus, fused pussy, fused anus, fused crotch, poorly drawn crotch, fused seam, poorly drawn anus, poorly drawn pussy, poorly drawn crotch, poorly drawn crotch seam, bad thigh gap, missing thigh gap, fused thigh gap, liquid thigh gap, poorly drawn thigh gap, poorly drawn anus, bad collarbone, fused collarbone, missing collarbone, liquid collarbone, strong girl, obesity, worst quality, low quality, normal quality, liquid tentacles, bad tentacles, poorly drawn tentacles, split tentacles, fused tentacles, missing clit, bad clit, fused clit, colorful clit, black clit, liquid clit, QR code, bar code, censored, safety panties, safety knickers, beard, furry, pony, pubic hair, mosaic, futa, testis, (((deformed))), blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, (extra_limb), (ugly), (poorly drawn hands), fused fingers, messy drawing, broken legs censor, censored, censor_bar, multiple breasts, (mutated hands and fingers:1.5), (long body :1.3), (mutation, poorly drawn :1.2), black-white, bad anatomy, liquid body, liquid tongue, disfigured, malformed, mutated, anatomical nonsense, text font ui, error, malformed hands, long neck, blurred, lowers, low res, bad anatomy, bad proportions, bad shadow, uncoordinated body, unnatural body, fused breasts, bad breasts, huge breasts, poorly drawn breasts, extra breasts, liquid breasts, heavy breasts, missing breasts, huge haunch, huge thighs, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, fusedears, bad ears, poorly drawn ears, extra ears, liquid ears, heavy ears, missing ears, fused animal ears, bad animal ears, poorly drawn animal ears, extra animal ears, liquid animal ears, heavy animal ears, missing animal ears, text, ui, error, missing fingers, missing limb, fused fingers, one hand with more than 5 fingers, one hand with less than 5 fingers, one hand with more than 5 digit, one hand with less than 5 digit, extra digit, fewer digits, fused digit, missing digit, bad digit, liquid digit, colorful tongue, blacktongue, cropped, watermark, username, blurry, JPEG artifacts, signature, 3D, 3D game, 3D game scene, 3D character, malformed feet, extra feet, bad feet, poorly drawn feet, fused feet, missing feet, extra shoes, bad shoes, fused shoes, more than two shoes, poorly drawn shoes, bad gloves, poorly drawn gloves, fused gloves, bad cum, poorly drawn cum, fused cum, bad hairs, poorly drawn hairs, fused hairs, big muscles, ugly, bad face, fused face, poorly drawn face, cloned face, big face, long face, badeyes, fused eyes poorly drawn eyes, extra eyes, malformed limbs, more than 2 nipples, missing nipples, different nipples, fused nipples, bad nipples, poorly drawnnipples, black nipples, colorful nipples, gross proportions. short arm, (((missing arms))), missing thighs, missing calf, missing legs, mutation, duplicate, morbid, mutilated, poorly drawn hands, more than 1 left hand, more than 1 right hand, deformed, (blurry), disfigured, missing legs, extra arms, extra thighs, more than 2 thighs, extra calf,fused calf, extra legs, bad knee, extra knee, more than 2 legs, bad tails, bad mouth, fused mouth, poorly drawn mouth, bad tongue, tongue within mouth, too long tongue, black tongue, big mouth, cracked mouth, bad mouth, dirty face, dirty teeth, dirty pantie, fused pantie, poorly drawn pantie, fused cloth, poorly drawn cloth, badpantie, yellow teeth, thick lips, bad camel toe, colorful camel toe, bad asshole, poorly drawn asshole, fused asshole, missing asshole, bad anus, bad pussy, bad crotch, bad crotch seam, fused anus, fused pussy, fused anus, fused crotch, poorly drawn crotch, fused seam, poorly drawn anus, poorly drawn pussy, poorly drawn crotch, poorly drawn crotch seam, bad thigh gap, missing thigh gap, fused thigh gap, liquid thigh gap, poorly drawn thigh gap, poorly drawn anus, bad collarbone, fused collarbone, missing collarbone, liquid collarbone, worst quality, low quality, normal quality, liquid tentacles, bad tentacles, poorly drawn tentacles, split tentacles, fused tentacles, missing clit, bad clit, fused clit, colorful clit, black clit, liquid clit, QR code, bar code, censored, safety panties, safety knickers, beard, mosaic, futa, testis",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/0b0550e6-1034-4b5b-63c7-e545545cfb00/width=450/79559.jpeg",
+                "nsfw":false,
+                "width":816,
+                "height":816,
+                "hash":"U5F;TjT1s.}q19bvoejF^QxDR*I=ZLenaeNw",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"512x512",
+                  "seed":1280899878,
+                  "Score":"6.29",
+                  "steps":30,
+                  "prompt":"<lora:mw_charturn3:.1> (15Charturn_longCap_D:.4)  a character turnaround young male cyberpunk netrunner, (high detailed skin:1.2),  RAW photo. Human, cybernetic hands,  (Multiple views of the same character:1.2) (on the same background:1.1) , modelshoot style, nousr robot",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":5.5,
+                  "Clip skip":"2",
+                  "resources":[
+                    {
+                      "name":"mw_charturn3",
+                      "type":"lora",
+                      "weight":0.1
+                    }
+                  ],
+                  "Model hash":"847da9eead",
+                  "Hires upscale":"1.6",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"(naked:1), (military:1.2),",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/d102e6a2-3f44-49ea-33ab-47633f090c00/width=450/79558.jpeg",
+                "nsfw":false,
+                "width":816,
+                "height":608,
+                "hash":"ULI50xs.%MIU~qt7ofWCMxofR*t7D%WCaxof",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"512x384",
+                  "seed":254644189,
+                  "Score":"6.36",
+                  "steps":30,
+                  "prompt":"(15Charturn_longCap_D:1)  a character turnaround of 30 y.o woman, red hair, short haircut, pale skin, (high detailed skin:1.2),  RAW photo.  (Multiple views of the same character:1.2) (on the same background:1.1), modelshoot style, nousr robot",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":5.5,
+                  "Clip skip":"2",
+                  "resources":[
+  
+                  ],
+                  "Model hash":"847da9eead",
+                  "Hires upscale":"1.6",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"(naked:1), (military:1.2), (deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime:1.4), text, close up, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/aff87e58-f731-42dc-7838-cc811e7e4700/width=450/79557.jpeg",
+                "nsfw":false,
+                "width":944,
+                "height":824,
+                "hash":"U9Kw|Mae4n4o4no0t7Rj~qjt%M-;?bNGt7xu",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"512x448",
+                  "seed":2719393072,
+                  "Score":"6.17",
+                  "steps":30,
+                  "prompt":"(15Charturn_longCap_D:1) a character turnaround of A rat. Subsurface scattering, rimlight, (charturner:1). art by smoose2. Multiple views of the same character in the same outfit.   , ANALOG STYLE, MODELSHOOT STYLE, NSFW, NUDITY",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":8.5,
+                  "Clip skip":"2",
+                  "resources":[
+  
+                  ],
+                  "Model hash":"c35782bad8",
+                  "Hires upscale":"1.85",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"naked, nude, boobs, nsfw, nipples",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/f8ff5342-06a4-4a72-aa5f-11762c417a00/width=450/79556.jpeg",
+                "nsfw":false,
+                "width":944,
+                "height":944,
+                "hash":"UEG[+o$*aet6D%RkjsoL~pxut7R*Rjayayj[",
+                "meta":{
+                  "ENSD":"31337",
+                  "Size":"512x512",
+                  "seed":3400864224,
+                  "Score":"5.87",
+                  "steps":30,
+                  "prompt":"(15Charturn_longCap_D:1) a facial character turnaround of A (rat:1.3). fursona  Subsurface scattering, rimlight, (charturner:1). Covered with fur. Dark fur, art by smoose2. Multiple views of the same character in the same outfit.   , ANALOG STYLE, MODELSHOOT STYLE, NSFW, NUDITY",
+                  "sampler":"DDIM",
+                  "Eta DDIM":"0.16",
+                  "cfgScale":8.5,
+                  "Clip skip":"2",
+                  "resources":[
+  
+                  ],
+                  "Model hash":"c35782bad8",
+                  "Hires upscale":"1.85",
+                  "Hires upscaler":"Latent (nearest-exact)",
+                  "negativePrompt":"hoodie, human, military, armor, boots, (naked:1.6), nude, boobs, nsfw, nipples",
+                  "Denoising strength":"0.7"
+                }
+              }
+            ],
+            "downloadUrl":"https://civitai.com/api/download/models/8387"
+          },
+          {
+            "id":3334,
+            "modelId":3036,
+            "name":"CharTurner V1 - For 1.5",
+            "createdAt":"2022-12-28T23:21:25.362Z",
+            "updatedAt":"2023-03-15T18:58:13.476Z",
+            "trainedWords":[
+              "charturner"
+            ],
+            "baseModel":"SD 1.5",
+            "earlyAccessTimeFrame":0,
+            "description":"<p>First version. Still has things I'm working on fixing. Adding \"multiple views of the same character\" can help if your character is being stubborn. </p>",
+            "stats":{
+              "downloadCount":12424,
+              "ratingCount":23,
+              "rating":4.65
+            },
+            "files":[
+              {
+                "name":"charturner.pt",
+                "id":3231,
+                "sizeKB":12.9169921875,
+                "type":"Model",
+                "metadata":{
+                  "fp":"fp16",
+                  "size":"full",
+                  "format":"PickleTensor"
+                },
+                "pickleScanResult":"Success",
+                "pickleScanMessage":"**Detected Pickle imports (3)**\n```\ncollections.OrderedDict\ntorch.FloatStorage\ntorch._utils._rebuild_tensor_v2\n```",
+                "virusScanResult":"Success",
+                "scannedAt":"2022-12-28T23:28:40.051Z",
+                "hashes":{
+                  "AutoV2":"733E24A8F4",
+                  "SHA256":"733E24A8F4F9741DF4C936380BE9F25DF2F79FACD23AB956E03F9D9F75872DFD",
+                  "CRC32":"45B06535",
+                  "BLAKE3":"E89566CFC12D5596C9F373838C58778DE9833AED6B23348FCA0EAEEBC18ACE32"
+                },
+                "downloadUrl":"https://civitai.com/api/download/models/3334",
+                "primary":true
+              }
+            ],
+            "images":[
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/1ade236c-eabe-4e9e-9719-37adaf55c300/width=450/22507.jpeg",
+                "nsfw":false,
+                "width":768,
+                "height":768,
+                "hash":"U8GRSVXmPU$*00n%IoI:BTxGn4Io?^ozxaso",
+                "meta":{
+                  "Size":"768x768",
+                  "seed":3644685645,
+                  "steps":30,
+                  "prompt":"highly detailed Full body charturner of a postman. multiple views of the same character.  . Subsurface scattering, rimlight,, art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":8.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"woman, girl, toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x512",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/0cd2ed10-3582-40e5-8b4f-0612f6841400/width=450/22516.jpeg",
+                "nsfw":false,
+                "width":768,
+                "height":768,
+                "hash":"UNIX~zofRj?bxbofayay~qoetRV@%gaeofof",
+                "meta":{
+                  "Size":"768x768",
+                  "seed":355585046,
+                  "steps":30,
+                  "prompt":"highly detailed Full body of character turnaround of a mailman. multiple views of the same character.  . Subsurface scattering, rimlight, charturner, art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":8.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"orange, woman, girl, toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x512",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/1aa3e6e1-316f-4da7-3d9c-1f5934d11900/width=450/22515.jpeg",
+                "nsfw":false,
+                "width":896,
+                "height":576,
+                "hash":"UBGbYZ-pbIIowJWBR+t6~qoft7aeW=j[V@jY",
+                "meta":{
+                  "Size":"896x576",
+                  "seed":2294001164,
+                  "steps":30,
+                  "prompt":"a 2d character turnaround of A rat.  Subsurface scattering, rimlight, (charturner:1)., art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":10.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x320",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/b76df236-a854-434e-d78e-e876ca2a0900/width=450/22514.jpeg",
+                "nsfw":false,
+                "width":896,
+                "height":576,
+                "hash":"U8GbSK^+00IA00kB-;?b~WITxvMy00RkRPe-",
+                "meta":{
+                  "Size":"896x576",
+                  "seed":2294001167,
+                  "steps":30,
+                  "prompt":"a 2d character turnaround of A rat.  Subsurface scattering, rimlight, (charturner:1)., art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":10.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x320",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/d4bebcee-7be0-4595-3c98-93eb46460600/width=450/22513.jpeg",
+                "nsfw":false,
+                "width":896,
+                "height":576,
+                "hash":"U8Fg@2%2s-s:DlS~NGS2NdR*OER+{dnNofWV",
+                "meta":{
+                  "Size":"896x576",
+                  "seed":2760083340,
+                  "steps":30,
+                  "prompt":"a character turnaround of a curvy redheaded pinup girl(Hildai17:0.8).  Subsurface scattering, rimlight, (charturner:1)., art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":10.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x320",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/fcfed606-93b1-4d8c-451c-b2a378d70500/width=450/22512.jpeg",
+                "nsfw":false,
+                "width":1024,
+                "height":768,
+                "hash":"UKGuq9$%Mxxt?Hs:t7j[_NWqt8f+RkWBRjae",
+                "meta":{
+                  "Size":"1024x768",
+                  "seed":2094869509,
+                  "steps":30,
+                  "prompt":"highly detailed Full body Character turnaround of a evil badger mage. front, side, back,  multiple views of the same character.  charturner. Subsurface scattering, rimlight, pouches and herbs. Highly detailed soft clumpy fur, art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":15.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"576x448",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/3e1128ee-1d06-4923-5ffb-ee989762ad00/width=450/22511.jpeg",
+                "nsfw":false,
+                "width":1024,
+                "height":768,
+                "hash":"UEE:0poz%gaKaKWVWBn%~qt7WBoLazRPRjV@",
+                "meta":{
+                  "Size":"1024x768",
+                  "seed":767967615,
+                  "steps":30,
+                  "prompt":"highly detailed Full body Character turnaround of a male ninja. front, side, back,  multiple views of the same character.  charturner. Subsurface scattering, rimlight,, art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":7.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"woman, girl, toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"576x448",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/badde49e-83e2-4a5d-bb68-b19847242e00/width=450/22510.jpeg",
+                "nsfw":false,
+                "width":1024,
+                "height":768,
+                "hash":"UAD]PV%gsp?v~qn$R*Rj?vn$W;V@%MR*n%j[",
+                "meta":{
+                  "Size":"1024x768",
+                  "seed":555145518,
+                  "steps":30,
+                  "prompt":"Full body Character turnaround of a evil badger mage. front, side, back,  multiple views of the same character.  charturner, art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":10,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"576x448",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/e64532fb-142f-4a56-1d87-56efdec04800/width=450/22509.jpeg",
+                "nsfw":false,
+                "width":768,
+                "height":768,
+                "hash":"U8G+tBRjx]0000ozR*%M~qo#Rj%g%hM{RPxv",
+                "meta":{
+                  "Size":"768x768",
+                  "seed":2373222042,
+                  "steps":30,
+                  "prompt":"highly detailed Full body of character turnaround of a robot paper boy. multiple views of the same character in the same outfit. Subsurface scattering, rimlight, charturner, art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":8.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"orange, woman, girl, toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x512",
+                  "Denoising strength":"0.7"
+                }
+              },
+              {
+                "url":"https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/a8d05704-751f-4d8e-ab4b-3be5b50c5400/width=450/22508.jpeg",
+                "nsfw":false,
+                "width":896,
+                "height":576,
+                "hash":"UBHL3poM9Fiv~VWXNGt7SKV@WBof$$j?V@nO",
+                "meta":{
+                  "Size":"896x576",
+                  "seed":2936119404,
+                  "steps":30,
+                  "prompt":"Full body of character turnaround of a (kitten animal :1.1). highly detailed  front, back, side, 3/4 (multiple views:1.1) of the (same character :1.1)in the same outfit. Subsurface scattering, rimlight, (charturner:1.3)., art by smoose2",
+                  "sampler":"DPM++ 2M Karras",
+                  "cfgScale":10.5,
+                  "Model hash":"993f52a4",
+                  "negativePrompt":"humanoid, woman, girl, toy, Deformed, blurry, bad anatomy, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, poorly drawn hands, missing limb, blurry, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, ((((mutated hands and fingers)))), (((out of frame))), cartoon, 3d, (disfigured), (bad art), (deformed), (poorly drawn), (extra limbs), strange colours, blurry, boring, sketch, lacklustre, repetitive, cropped, hands",
+                  "First pass size":"512x320",
+                  "Denoising strength":"0.7"
+                }
+              }
+            ],
+            "downloadUrl":"https://civitai.com/api/download/models/3334"
+          }
+        ]
+      }
+    ],
+    "metadata":{
+      "totalItems":1676,
+      "currentPage":1,
+      "pageSize":3,
+      "totalPages":559,
+      "nextPage":"https://civitai.com/api/v1/models?limit=3&types=TextualInversion&page=2"
+    }
+  }
