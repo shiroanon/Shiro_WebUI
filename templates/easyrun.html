@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Image Chat</title>
+    <title>Image Chat</title>
     <link rel="stylesheet" href="/static/css/easyrun.css">
 </head>
 <body>
@@ -11,13 +11,12 @@
     <div class="chat-container" id="chat"></div>
     <div class="input-container">
         <textarea id="prompt" placeholder="Describe your image (e.g., 'A sunset cfg:7.5 steps:25 seed:42')"></textarea>
-        <button id="send-btn">➤</button>
+        <button id="send-btn">🔥</button>
     </div>
-<!-- Streaming Preview Elements -->
-<div id="stream-container">
-    <img id="streamed-image" alt="Generation preview">
-</div>
-<button id="interrupt-btn">Stop Generation</button>
+    <div id="stream-container">
+        <img id="streamed-image" alt="Generation preview">
+    </div>
+    <button id="interrupt-btn">Stop Generation</button>
 
     <script src="/static/js/easyrun.js"></script>
 </body>

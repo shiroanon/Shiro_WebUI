@@ -8,8 +8,40 @@ from flask_cors import CORS
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
-url1="https://b83e809a5ad63227a030f6632813c3fe.loophole.site/"
+url1="https://2f32b4ea1d997dd5a0c577e428c8af10.loophole.site/"
+API_URL = "https://civitai.com/api/v1/models"
+def fetch_models(query=None, limit=9, cursor=None, sort="Newest", types=None, nsfw=None):
+    params = {
+        "limit": limit,
+        "sort": sort
+    }
+    if query:
+        params["query"] = query
+    if types:
+        params["types"] = types
+    if nsfw is not None:
+        params["nsfw"] = nsfw
+    if cursor:
+        params["cursor"] = cursor
 
+    response = requests.get(API_URL, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        return data.get("items", []), data.get("metadata", {}).get("nextCursor", None)
+    return [], None
+
+@app.route("/modal")
+def home():
+    query = request.args.get("query", "")
+    sort = request.args.get("sort", "Newest")
+    types = request.args.get("types", "")
+    nsfw = request.args.get("nsfw", None)
+    nsfw = nsfw.lower() == "true" if nsfw else None
+    cursor = request.args.get("cursor", None)
+
+    models, next_cursor = fetch_models(query=query, cursor=cursor, sort=sort, types=types, nsfw=nsfw)
+
+    return render_template("modal.html", models=models, query=query, sort=sort, types=types, nsfw=nsfw, next_cursor=next_cursor)
 @app.route("/url")
 def url():
     return jsonify({"url":url1})
