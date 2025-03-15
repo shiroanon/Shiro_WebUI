@@ -3,9 +3,16 @@ body {
     display: flex;
     flex-direction: row;
     height: 100vh;
-    background-color: #222222;
+    background-color: #161616;
     color: #f8f8f8;
     margin: 0;
+}
+.section {
+    background-color: rgba(17, 17, 17, 0.4);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 5px;
 }
 
 /* Main Wrapper */
@@ -17,11 +24,12 @@ body {
     border: 1px solid #000000;
     overflow: hidden;
     margin: 10px;
+    
 }
 
 /* First Wrapper (Controls Section) */
 .wrapper:first-child {
-    background-color: #2a2a2a;
+    background-color: #121111;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -37,10 +45,11 @@ body {
     display: flex;
     flex-direction: column;
     width: 80%;
-    background-color: #3a3a3a;
+    background-color: #323030;
     padding: 15px;
     border-radius: 8px;
     overflow-y: auto;
+  
 }
 
 /* Second Wrapper (Image Preview & Info) */
@@ -68,14 +77,21 @@ body {
 }
 
 /* Input Styling */
+/* Input Styling */
 textarea, input, select {
-    width: 100%;
+    width: calc(100% - 15px);
     padding: 5px;
-    margin: 5px 0;
+    margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #444;
+    background-color: #151414;
     color: white;
+}
+
+textarea{
+    font-size: 1.2rem;
+    font-weight: bold;
+
 }
 
 /* Button Styling */
@@ -126,16 +142,86 @@ input[type="button"] {
 /* Custom Scrollbar for First and Third Wrappers */
 .wrapper:first-child::-webkit-scrollbar,
 .output-container::-webkit-scrollbar {
-    width: 6px;
+    width: 0px;
 }
 
 .wrapper:first-child::-webkit-scrollbar-thumb,
 .output-container::-webkit-scrollbar-thumb {
     background-color: #888;
-    border-radius: 3px;
+    border-radius: 0px;
 }
 
 .wrapper:first-child::-webkit-scrollbar-track,
 .output-container::-webkit-scrollbar-track {
     background: #333;
+}
+
+/* Third Wrapper (Output Section) */
+.output-container {
+    flex: 1;
+    max-width: 50vh;
+    overflow-y: auto;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 8px;
+}
+
+/* Styling for images inside the output container */
+.output-container img {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: 1px solid #444;
+}
+
+.output-container img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Custom Scrollbar for Output Container */
+.output-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.output-container::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 4px;
+}
+
+.output-container::-webkit-scrollbar-track {
+    background: #222;
+}
+.wrapper-gallery {
+   
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #000000;
+    overflow: hidden;
+    margin: 10px;
+}
+
+/* First Wrapper (Controls Section) */
+.wrapper-gallery:first-child {
+    background-color: #2a2a2a;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
 }

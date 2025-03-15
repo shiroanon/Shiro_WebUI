@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify , send_file
 import utils
 import json
 import requests
 from urllib.parse import urlencode
 from flask_cors import CORS
+import os 
+from PIL import Image
+import io
 
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
@@ -32,16 +35,39 @@ def fetch_models(query=None, limit=9, cursor=None, sort="Newest", types=None, ns
 @app.route("/get_blocks")
 def get_blocks():
     blocks = [
-        {"type": "textarea", "id": "positive_prompt", "name": "Positive Prompt"},
-        {"type": "textarea", "id": "negative_prompt", "name": "Negative Prompt"},
-        {"type": "range", "id": "cfg", "name": "CFG Scale"},
-        {"type": "range", "id": "steps", "name": "Steps"},
-        {"type": "select", "id": "sampler", "name": "Sampler", "options": ["euler"]},
-        {"type": "select", "id": "schedular", "name": "Scheduler", "options": ["AYS"]},
-        {"type": "file", "id": "image_upload", "name": "Upload Image"},
-        {"type": "button", "value": "SubMit", "name": ""}
+        {
+            "container": "Prompts",
+            "elements": [
+                {"type": "textarea", "id": "positive_prompt", "name": "Positive Prompt"},
+                {"type": "textarea", "id": "negative_prompt", "name": "Negative Prompt"},
+            ],
+        },
+        {
+            "container": "Configuration",
+            "elements": [
+                {"type": "float-range", "id": "cfg", "name": "CFG Scale"},
+                {"type": "range", "id": "steps", "name": "Steps"},
+                {"type": "wid-hei", "id": "width", "name": "Width"},
+                {"type": "wid-hei", "id": "height", "name": "Height"},
+                {"type": "select", "id": "sampler", "name": "Sampler", "options": ["euler"]},
+                {"type": "select", "id": "schedular", "name": "Scheduler", "options": ["AYS"]},
+            ],
+        },
+        {
+            "container": "Uploads",
+            "elements": [
+                {"type": "file", "id": "image_upload", "name": "Upload Image"},
+            ],
+        },
+        {
+            "container": "Actions",
+            "elements": [
+                {"type": "button", "value": "Submit", "name": ""},
+            ],
+        },
     ]
     return jsonify(blocks)
+
 @app.route("/modal")
 def home():
     query = request.args.get("query", "")
@@ -68,6 +94,15 @@ def adv():
 @app.route("/easyrun")
 def easyrun():
     return render_template("easyrun.html")
+
+@app.route("/stream")
+def img():
+    return send_file("static/1.png")
+
+@app.route("/queue")
+def queue():
+    return jsonify(["1"])
+
 
 @app.route('/gallery')
 def gallery():
@@ -101,6 +136,35 @@ def generate_image():
         kk.append(url1+i)
     return jsonify({"img":kk})    
 
+
+
+IMAGE_DIR = "static"
+
+
+@app.route('/compress', methods=['GET'])
+def compress_image():
+    img_name = request.args.get('name')
+    if not img_name:
+        return jsonify({"error": "Image name is required"}), 400
+
+    img_path = os.path.join(IMAGE_DIR, img_name)
+    if not os.path.isfile(img_path):
+        return jsonify({"error": "Image not found"}), 404
+
+    img = Image.open(img_path)
+    compressed_bytes = io.BytesIO()
+    img.save(compressed_bytes, format="WEBP", quality=30)
+    compressed_bytes.seek(0)
+
+    return send_file(compressed_bytes, mimetype='image/webp', as_attachment=True, download_name=f"{img_name}.webp")
+
+@app.route('/list', methods=['GET'])
+def list_images():
+    if not os.path.isdir(IMAGE_DIR):
+        return jsonify({"error": "Invalid directory"}), 400
+
+    images = [f for f in os.listdir(IMAGE_DIR) if os.path.isfile(os.path.join(IMAGE_DIR, f))]
+    return jsonify({"images": images})
 if __name__ == "__main__":
 
     app.run(
