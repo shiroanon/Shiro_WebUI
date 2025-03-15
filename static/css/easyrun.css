@@ -1,14 +1,15 @@
 /* CSS Reset & Basic Body Styles */
 :root {
   /* Color Palette - Light Theme */
-  --light-background: #ffffff;
-  --light-secondary: #f0f0f0;
+  --light-background: #EDE4FF;
+  --light-secondary: #A076F9;
   --light-text: #000000;
-  --light-accent: #000000;
-  --light-user-message: #000000;
+  --light-my:#ffffff;
+  --light-accent: #6528F7;
+  --light-user-message: #A076F9;
   --light-bot-message: #f0f0f0;
-  --light-input-background: #ffffff;
-  --light-input-border: #cccccc;
+  --light-input-background: #D7BBF5;
+  --light-input-border: #393939;
   --light-shadow: rgba(0, 0, 0, 0.05);
   --light-error: #ff4757;
   --light-secondary-text: #666666;
@@ -16,7 +17,8 @@
   /* Color Palette - Dark Theme */
   --dark-background: #000000;
   --dark-secondary: #1a1a1a;
-  --dark-text: #ffffff;
+  --dark-text:#ffffff;
+  --dark-my:#000000;
   --dark-accent: #ffffff;
   --dark-user-message: #ffffff;
   --dark-bot-message: #1a1a1a;
@@ -32,7 +34,7 @@
   --text-color: var(--light-text);
   --accent-color: var(--light-accent);
   --message-user-bg: var(--light-user-message);
-  --message-user-text: var(--light-text);
+  --message-user-text: var(--light-my);
   --message-bot-bg: var(--light-bot-message);
   --input-bg: var(--light-input-background);
   --input-border: var(--light-input-border);
@@ -41,7 +43,7 @@
   --secondary-text: var(--light-secondary-text);
 
   /* Base settings */
-  --base-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
   --base-border-radius: 8px;
   --base-padding: 12px;
   --base-gap: 0.75rem;
@@ -54,7 +56,7 @@
   --text-color: var(--dark-text);
   --accent-color: var(--dark-accent);
   --message-user-bg: var(--dark-user-message);
-  --message-user-text: var(--dark-text);
+  --message-user-text: var(--dark-my);
   --message-bot-bg: var(--dark-bot-message);
   --input-bg: var(--dark-input-background);
   --input-border: var(--dark-input-border);
@@ -66,7 +68,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--base-font-family);
+  font-family: "Hack Nerd Font";
+  font-style: italic;
   background-color: var(--background-color);
   color: var(--text-color);
   min-height: 100vh;
@@ -128,21 +131,23 @@ body {
   border: 1px solid var(--input-border);
   border-radius: var(--base-border-radius);
   resize: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.4;
   background-color: var(--input-bg);
   color: var(--text-color);
 }
 
 #send-btn {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border: none;
-  border-radius: var(--base-border-radius);
+  border-radius:50% ;
   background-color: var(--accent-color);
   color: var(--background-color);
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  position: relative;
+  top: -15px;
 }
 
 /* Mobile Adjustments */
@@ -171,6 +176,7 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 1rem;
   padding: 20px;
+  
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   display: none; /* Hidden by default */
   overflow: hidden; /* Prevent potential content overflow */
@@ -178,8 +184,9 @@ body {
 
 #streamed-image {
   display: block; /* Ensure proper display within container */
-  max-width: 80vw;
-  max-height: 80vh;
+  max-width: 190vw;
+  max-height: 190vh;
+  width: 250px;
   height: auto; /* Adjust height automatically */
   border-radius: 1rem;
   object-fit: contain; /* Keep aspect ratio */
@@ -230,6 +237,7 @@ body {
   cursor: pointer;
   display: none; /* Hidden by default */
   box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+  font-size: 1.5rem;
   transition: all var(--base-transition-duration) ease;
   z-index: 1000;
 }
@@ -248,8 +256,8 @@ body {
   background-color: var(--secondary-background);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   display: flex;
   align-items: center;

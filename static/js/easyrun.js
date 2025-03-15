@@ -11,7 +11,7 @@ function addMessage(text, isUser = true) {
     messageDiv.className = `message ${isUser ? 'user-message' : ''}`;
     messageDiv.innerHTML = `
         <div class="message-text">${text}</div>
-        <div class="timestamp">${new Date().toLocaleTimeString()}</div>
+      
     `;
     
     // Add click handler for user messages
@@ -99,7 +99,7 @@ async function generateImage(prompt) {
                 timestamp.className = 'timestamp';
                 timestamp.textContent = new Date().toLocaleTimeString();
 
-                imgMessage.appendChild(timestamp);
+                
                 chat.appendChild(imgMessage);
             });
         } else {

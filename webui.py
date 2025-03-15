@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
-url1="https://2f32b4ea1d997dd5a0c577e428c8af10.loophole.site/"
+url1="https://64350ab35441fe08b83a488db4699cd7.loophole.site/"
 API_URL = "https://civitai.com/api/v1/models"
 def fetch_models(query=None, limit=9, cursor=None, sort="Newest", types=None, nsfw=None):
     params = {
@@ -29,7 +29,19 @@ def fetch_models(query=None, limit=9, cursor=None, sort="Newest", types=None, ns
         data = response.json()
         return data.get("items", []), data.get("metadata", {}).get("nextCursor", None)
     return [], None
-
+@app.route("/get_blocks")
+def get_blocks():
+    blocks = [
+        {"type": "textarea", "id": "positive_prompt", "name": "Positive Prompt"},
+        {"type": "textarea", "id": "negative_prompt", "name": "Negative Prompt"},
+        {"type": "range", "id": "cfg", "name": "CFG Scale"},
+        {"type": "range", "id": "steps", "name": "Steps"},
+        {"type": "select", "id": "sampler", "name": "Sampler", "options": ["euler"]},
+        {"type": "select", "id": "schedular", "name": "Scheduler", "options": ["AYS"]},
+        {"type": "file", "id": "image_upload", "name": "Upload Image"},
+        {"type": "button", "value": "SubMit", "name": ""}
+    ]
+    return jsonify(blocks)
 @app.route("/modal")
 def home():
     query = request.args.get("query", "")
@@ -49,7 +61,9 @@ def url():
 @app.route("/")
 def index():
     return render_template("index.html")
-
+@app.route("/adv")
+def adv():
+    return render_template("adv.html")
 
 @app.route("/easyrun")
 def easyrun():
