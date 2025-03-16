@@ -1,5 +1,5 @@
 A Comfy Frontent For ~~ComfyUI~~ ShiroUI 
-# Current Dependencies - NOTHING 
+# Current Dependencies - ~~Comfy~~ShiroUI To Python Repo 
 
 ## Especial Thanks - Comfy To Python Repo 
 
