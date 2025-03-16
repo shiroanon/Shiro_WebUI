@@ -25,6 +25,7 @@ body {
     overflow: hidden;
     margin: 10px;
     
+    
 }
 
 /* First Wrapper (Controls Section) */
@@ -44,12 +45,17 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     background-color: #323030;
-    padding: 15px;
+    
+   
     border-radius: 8px;
     overflow-y: auto;
   
+}
+h2{
+    padding-left: 20px;
+    right: 10px;
 }
 
 /* Second Wrapper (Image Preview & Info) */
@@ -79,18 +85,23 @@ body {
 /* Input Styling */
 /* Input Styling */
 textarea, input, select {
-    width: calc(100% - 15px);
-    padding: 5px;
+    width: calc(100% - 16px);
     margin: 5px;
     border: none;
     border-radius: 5px;
     background-color: #151414;
     color: white;
 }
+select, input{
+    height: 40px;
+}
 
 textarea{
     font-size: 1.2rem;
     font-weight: bold;
+      /* Set fixed width */
+    height: 150px; /* Set fixed height */
+    resize: none;  /* Disable resizing */
 
 }
 
