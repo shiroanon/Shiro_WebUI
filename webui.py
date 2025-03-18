@@ -11,7 +11,7 @@ import io
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
-url1="https://64350ab35441fe08b83a488db4699cd7.loophole.site/"
+url1="https://cfd688fb5f212da237becf5a8ecca8b8.loophole.site/"
 API_URL = "https://civitai.com/api/v1/models"
 def fetch_models(query=None, limit=9, cursor=None, sort="Newest", types=None, nsfw=None):
     params = {
@@ -47,8 +47,9 @@ def get_blocks():
             "elements": [
                 {"type": "float-range", "id": "cfg", "name": "CFG Scale"},
                 {"type": "range", "id": "steps", "name": "Steps"},
-                {"type": "wid-hei", "id": "width", "name": "Width"},
-                {"type": "wid-hei", "id": "height", "name": "Height"},
+                {"type": "wid-hei", "id": "wid", "name": "Width"},
+                {"type": "wid-hei", "id": "hei", "name": "Height"},
+                {"type": "range", "id": "batch_size", "name": "Batch Size"},
                 {"type": "select", "id": "sampler", "name": "Sampler", "options": ["euler"]},
                 {"type": "select", "id": "schedular", "name": "Scheduler", "options": ["AYS"]},
             ],
@@ -62,7 +63,7 @@ def get_blocks():
         {
             "container": "Actions",
             "elements": [
-                {"type": "button", "value": "Submit", "name": ""},
+                {"type": "button","id": "submit", "value": "Submit", "name": "sumbit"},
             ],
         },
     ]
@@ -135,7 +136,15 @@ def generate_image():
     for i in lit:
         kk.append(url1+i)
     return jsonify({"img":kk})    
-
+@app.route('/gener', methods=["POST"])
+def jj():
+    data = request.get_json()
+    response = requests.post(url1+"generate", json=data)
+    lit=response.json()
+    kk=[]
+    for i in lit:
+        kk.append(url1+i)
+    return jsonify(kk)
 
 
 IMAGE_DIR = "static"

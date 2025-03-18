@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sectionWrapper.classList.add("section");
 
                 if (section.container) {
-                    let sectionTitle = document.createElement("h3");
+                    let sectionTitle = document.createElement("h4");
                     sectionTitle.textContent = section.container;
                     sectionWrapper.appendChild(sectionTitle);
                 }
@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         element.appendChild(fileInput);
                     } else if (block.type === "button") {
                         element = document.createElement("input");
+                        element.id=block.id
                         element.type = "button";
                         element.value = block.value;
                     } else if (block.type === "wid-hei") {
@@ -178,5 +179,68 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     } catch (error) {
         console.error("Error fetching images:", error);
+    }
+});
+async function sendDataAndPopulateImages() {
+    const container = document.getElementById("dynamic-container");
+    const inputs = container.querySelectorAll("input, select, textarea, .image-upload-box");
+    
+    let data = {};
+
+    inputs.forEach(input => {
+        if (input.type === "file" || input.classList.contains("image-upload-box")) return;
+
+        let value = input.value;
+
+        if (input.type === "range") {
+            value = input.step && input.step.includes(".") ? parseFloat(value) : parseInt(value);
+        }
+
+        data[input.id] = value;
+    });
+
+    try {
+        const response = await fetch("/gener", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const imageUrls = await response.json();
+
+        const outputContainer = document.querySelector(".img-container");
+        outputContainer.innerHTML = ""; 
+
+        imageUrls.forEach(url => {
+            const imgElement = document.createElement("img");
+            imgElement.src = url;
+            imgElement.alt = "Generated Image";
+            imgElement.classList.add("output-image");
+            outputContainer.appendChild(imgElement);
+        });
+    } catch (error) {
+        console.error("Error sending data:", error);
+    }
+}
+
+
+
+document.addEventListener("click", function (event) {
+    if (event.target.id === "submit") {
+        console.log("Submit button clicked");
+        sendDataAndPopulateImages();
+    }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const textarea = document.getElementById("positive_prompt");
+
+    if (textarea) {
+        textarea.value = localStorage.getItem("textareaValue") || "";
+
+        textarea.addEventListener("input", function () {
+            localStorage.setItem("textareaValue", textarea.value);
+        });
     }
 });

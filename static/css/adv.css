@@ -6,6 +6,11 @@ body {
     background-color: #161616;
     color: #f8f8f8;
     margin: 0;
+    background-image: url(/static/ComfyUI_00121_.png);
+    background-size: cover; /* Adjusts size to cover the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; 
+
 }
 .section {
     background-color: rgba(17, 17, 17, 0.4);
@@ -21,7 +26,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000000;
+   
     overflow: hidden;
     margin: 10px;
     
@@ -30,7 +35,8 @@ body {
 
 /* First Wrapper (Controls Section) */
 .wrapper:first-child {
-    background-color: #121111;
+    background-color: rgba(17, 17, 17, 0.018);
+    backdrop-filter: blur(10px);
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -46,7 +52,9 @@ body {
     display: flex;
     flex-direction: column;
     width: 90%;
-    background-color: #323030;
+    background-color: rgba(17, 17, 17, 0.148);
+    backdrop-filter: blur(10px);
+    padding: 10px;
     
    
     border-radius: 8px;
@@ -54,10 +62,14 @@ body {
   
 }
 h2{
-    padding-left: 20px;
+    padding-left: 10%;
     right: 10px;
 }
+h4{
+    padding-left: 40%;
+    color: rgb(255, 255, 255);
 
+}
 /* Second Wrapper (Image Preview & Info) */
 .img-container {
     display: flex;
@@ -70,6 +82,8 @@ h2{
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    background-color: rgba(17, 17, 17, 0);
+    
 }
 
 /* Third Wrapper (Output Section) */
@@ -79,8 +93,11 @@ h2{
     overflow-y: auto;
     padding: 5px;
     margin: 5px;
-    border: 1px solid #ccc;
+   
+    background-color: rgba(17, 17, 17, 0.148);
+    backdrop-filter: blur(10px);
 }
+
 
 /* Input Styling */
 /* Input Styling */
@@ -89,8 +106,11 @@ textarea, input, select {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #151414;
+    
+    background-color: rgba(195, 195, 195, 0.245);
+    backdrop-filter: blur(10px);
     color: white;
+    border: 0.2px solid #ffffff; /* Border color */
 }
 select, input{
     height: 40px;
@@ -174,14 +194,17 @@ input[type="button"] {
     overflow-y: auto;
     padding: 10px;
     margin: 10px;
-    border: 1px solid #555;
-    background-color: #2a2a2a;
+   
+  
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     align-items: flex-start;
     border-radius: 8px;
+    background-color: rgba(17, 17, 17, 0);
+    backdrop-filter: blur(0px);
+ 
 }
 
 /* Styling for images inside the output container */
@@ -207,7 +230,7 @@ input[type="button"] {
 
 .output-container::-webkit-scrollbar-thumb {
     background-color: #666;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 .output-container::-webkit-scrollbar-track {
@@ -219,7 +242,8 @@ input[type="button"] {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #000000;
+    background-color: rgba(17, 17, 17, 0.148);
+    backdrop-filter: blur(10px);
     overflow: hidden;
     margin: 10px;
 }
@@ -235,4 +259,48 @@ input[type="button"] {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
+}
+.wrapper{
+    background-color: rgba(17, 17, 17, 0.213);
+    backdrop-filter: blur(10px);
+}
+.img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.img-container img {
+    flex:  auto;
+    width: 100%;
+    height: 100%;
+    max-width: 300px; /* Limit max size */
+   
+    object-fit: contain;
+    
+}
+.wrapper {
+    max-height: 90%; /* Adjust as needed */
+    overflow-y: auto;
+    padding: 10px;
+   
+}
+
+/* Custom scrollbar styling */
+.wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+   
+    border-radius: 4px;
+}
+
+.wrapper::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
 }
