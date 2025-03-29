@@ -199,6 +199,18 @@ async function sendDataAndPopulateImages() {
         data[input.id] = value;
     });
 
+    const outputContainer = document.querySelector(".img-container");
+    outputContainer.innerHTML = "";
+
+    const streamImg = document.createElement("img");
+    streamImg.alt = "Streaming Image";
+    streamImg.classList.add("output-image");
+    outputContainer.appendChild(streamImg);
+
+    let streamInterval = setInterval(() => {
+        streamImg.src = `/stream?timestamp=${new Date().getTime()}`;
+    }, 1000);
+
     try {
         const response = await fetch("/gener", {
             method: "POST",
@@ -209,9 +221,8 @@ async function sendDataAndPopulateImages() {
         });
 
         const imageUrls = await response.json();
-
-        const outputContainer = document.querySelector(".img-container");
-        outputContainer.innerHTML = ""; 
+        clearInterval(streamInterval);
+        outputContainer.innerHTML = "";
 
         imageUrls.forEach(url => {
             const imgElement = document.createElement("img");
@@ -222,10 +233,9 @@ async function sendDataAndPopulateImages() {
         });
     } catch (error) {
         console.error("Error sending data:", error);
+        clearInterval(streamInterval);
     }
 }
-
-
 
 document.addEventListener("click", function (event) {
     if (event.target.id === "submit") {

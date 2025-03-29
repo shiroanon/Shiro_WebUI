@@ -28,7 +28,6 @@ body {
     border-radius: 50%;
 }
 
-/* Size variations for the animated circles */
 .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; }
 .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-duration: 12s; }
 .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; }
@@ -45,28 +44,21 @@ body {
     100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
 }
 
-/* Headings */
 h1 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1em;
 }
 
-/* Container */
 .container {
     max-width: 90%;
     border-radius: 10px;
     margin: 0 auto;
-    background: rgba(102, 10, 10, 0.178);
     padding: 1em;
     transition: transform 0.1s ease-in-out;
 }
 
-.container:hover {
-    transform: scale(1.05);
-}
 
-/* Workflow grid */
 .workflow-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust for smaller screens */
@@ -89,7 +81,7 @@ h1 {
 
 .workflow-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 0, 183, 0.495);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.495);
 }
 
 /* Card text */
