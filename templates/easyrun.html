@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Chat</title>
+    <title>Draggable Interface</title>
     <link rel="stylesheet" href="/static/css/easyrun.css">
 </head>
 <body>
-    <main>
-    <button class="theme-toggle" id="theme-toggle">🌓</button>
-    <div class="chat-container" id="chat"></div>
-    <div class="input-container">
-        <textarea id="prompt" placeholder="Describe your image (e.g., 'A sunset cfg:7.5 steps:25 seed:42')"></textarea>
-        <button id="send-btn">🔥</button>
+    <div class="up-container">
+        <div class="input-placeholder"></div>
+        <div class="input-placeholder"></div>
+        
+        <div class="section-title">Prompt And Parameters</div>
+        <div class="drag-handle-up" id="dragHandleUp"></div>
     </div>
-    <div id="stream-container">
-        <img id="streamed-image" alt="Generation preview">
-        <button id="interrupt-btn">✂️</button>
+    
+    <div class="down-container">
+        <div class="drag-handle-down" id="dragHandleDown"></div>
+        <div class="section-title bottom">Outputs</div>
+        
+        <div class="output-container">
+            <div class="output-box"></div>
+            <div class="output-box"></div>
+        </div>
     </div>
-</main>
 
     <script src="/static/js/easyrun.js"></script>
 </body>
