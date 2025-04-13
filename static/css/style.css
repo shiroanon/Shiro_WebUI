@@ -25,6 +25,11 @@ button{
     outline: none;
     background-color: #262626;
     border: none;
+    color: rgba(255, 255, 255, 0);
+}
+button:hover{
+    cursor: pointer;
+    background-color: #474646;
 }
 textarea{
     background-color: #F5F5F5;
@@ -87,13 +92,16 @@ textarea{
     body {
         grid-template-rows: unset;
         grid-template-columns: 1fr 1fr;
-        gap: 300px
+        gap: 25%
     }
     .others{
         border-radius: 25px 0px 0px 25px;
         margin: 3em 0 3em 3em;
     }
-    .section{
+    section{
         grid-template-rows: 1fr 0.6fr 0.2fr;
+    }
+    button{
+        color: white;
     }
 }
