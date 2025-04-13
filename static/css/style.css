@@ -1,151 +1,46 @@
-body {
-    font-family: Hack Nerd Font, monospace;
+body{
     display: grid;
-    margin: 0;
+    grid-template-rows: 1fr 0.8fr  ;
+    min-height: 100vh;
+    color: white;
+    font-family: "Josefin Slab", serif;
     padding: 0;
-    background-color: #0f0f0f;
-    color: #ffffff;
+    margin: 0;
+
 }
 
-/* Background circles */
-.circles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.circles li {
-    position: fixed;
-    display: block;
-    list-style: none;
-    background: rgba(255, 255, 255, 0.2);
-    animation: animate 25s linear infinite;
-    bottom: -150px;
-    border-radius: 50%;
-}
-
-.circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; }
-.circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-duration: 12s; }
-.circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; }
-.circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-duration: 18s; }
-.circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; }
-.circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; }
-.circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; }
-.circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-duration: 45s; }
-.circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-duration: 35s; }
-.circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-duration: 11s; }
-
-@keyframes animate {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
-    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
-}
-
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1em;
-}
-
-.container {
-    max-width: 90%;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 1em;
-    transition: transform 0.1s ease-in-out;
-}
-
-
-.workflow-grid {
+section{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust for smaller screens */
-    gap: 6em;
-    padding: 6em;
+    grid-template-rows: 1fr 0.3fr 0.1fr;
+    margin: 1em;
+    justify-items: center;
+    align-items: center;
+    gap: 1em;
+    
 }
-
-/* Workflow cards */
-.workflow-card {
-    background: rgba(17, 17, 17, 0.204);
-    border: 1px solid rgba(253, 252, 252, 0.2);
-    border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(240, 236, 236, 0.3), 0 0 20px rgba(252, 252, 252, 0.3);
-    padding: 2em;
-    text-align: center;
-    transition: transform 0.1s, box-shadow 0.2s;
-    color: #ffffff;
-    overflow: hidden;
+button{
+    width: 40%;
+    height: 80%;
+    border-radius: 20px;
+    outline: none;
+    background-color: #262626;
+    border: none;
 }
-
-.workflow-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.495);
-}
-
-/* Card text */
-.workflow-card h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5em;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-}
-
-.workflow-card p {
-    margin-bottom: 1em;
-    color: #bbbbbb;
-    font-size: 1rem;
-}
-
-/* Button */
-.btn {
-    display: inline-block;
-    padding: 0.5em 1em;
-    background: linear-gradient(145deg, #0078d7, #005ea6);
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 25px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.btn:hover {
-    background: linear-gradient(145deg, #005ea6, #0078d7);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 255, 255, 0.8);
-}
-
-/* Images in cards */
-.workflow-card img {
+textarea{
+    background-color: #F5F5F5;
+    border-radius: 20px;
     width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-    margin-bottom: 1em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 255, 255, 0.3);
+    height: 96%;
+    font-family: "Josefin Slab", serif;
+    box-sizing: border-box;
+    padding: 1.8em;
+    font-size: large;
+    padding-top:1;
+    resize: none;
+    outline: none;
+    border: none;
 }
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .workflow-grid {
-        padding: 2em;
-        gap: 2em;
-    }
-
-    .container {
-        max-width: 100%;
-    }
-
-    .workflow-card h2 {
-        font-size: 1.2rem;
-    }
-
-    .workflow-card p {
-        font-size: 0.9rem;
-    }
-
-    .btn {
-        font-size: 0.9rem;
-        padding: 0.4em 0.8em;
-    }
+.others{
+    background-color: #262626;
+    border-radius: 25px 25px 0px 0px;
 }
