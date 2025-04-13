@@ -43,4 +43,57 @@ textarea{
 .others{
     background-color: #262626;
     border-radius: 25px 25px 0px 0px;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 1fr ;
+    justify-content: center;
+    align-items: center;
+}
+.others .text{
+    text-align: center;
+    font-size: 1.5em;
+    padding: 1em;
+}
+.others .styles{
+    display: flex;
+    overflow-x: auto;
+    padding: 1em;
+}
+.styles .style{
+    border-radius: 10px;
+    background-color: #818080;
+    padding: 1em;
+    margin: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.others .output{
+    display: flex;
+    overflow-x: auto;
+    padding: 1em;
+}
+.output .image{
+    border-radius: 10px;
+    background-color: #818080;
+    padding: 1em;
+    margin: 0 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media  (min-width: 768px) {
+    body {
+        grid-template-rows: unset;
+        grid-template-columns: 1fr 1fr;
+        gap: 300px
+    }
+    .others{
+        border-radius: 25px 0px 0px 25px;
+        margin: 3em 0 3em 3em;
+    }
+    .section{
+        grid-template-rows: 1fr 0.6fr 0.2fr;
+    }
 }
