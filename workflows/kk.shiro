@@ -1,0 +1,36 @@
+
+load_checkpoint = CheckpointLoaderSimple(ckpt_name = "modelIV.safetensors")
+
+
+ksamplerselect = KSamplerSelect(sampler_name = "euler")
+
+
+alignyourstepsscheduler = AlignYourStepsScheduler(denoise = 1, model_type = "SD1", steps = STEPS)
+
+
+empty_latent_image = EmptyLatentImage(batch_size = BATCH_SIZE, height = HEIGHT, width = WIDTH)
+
+
+clip_text_encode_prompt = CLIPTextEncode(clip = load_checkpoint.CLIP, text = "POSITIVE")
+
+
+clip_text_encode_prompt_1 = CLIPTextEncode(clip = load_checkpoint.CLIP, text = "NEGETIVE")
+
+
+samplercustom = SamplerCustom(
+    add_noise = true,
+    cfg = CFG,
+    latent_image = empty_latent_image,
+    model = load_checkpoint.MODEL,
+    negative = clip_text_encode_prompt_1,
+    noise_seed = SEED,
+    positive = clip_text_encode_prompt,
+    sampler = ksamplerselect,
+    sigmas = alignyourstepsscheduler
+)
+
+
+vae_decode = VAEDecode(samples = samplercustom.output, vae = load_checkpoint.VAE)
+
+
+save_image = SaveImage(filename_prefix = "NAME", images = vae_decode)

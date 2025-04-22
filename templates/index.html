@@ -3,20 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Generator</title>
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add this style to hide the loading indicator initially */
+        #loading-indicator.hidden {
+            display: none;
+        }
+        /* Basic styling for generated images */
+        .output img {
+            max-width: 25%;
+            margin: 5px;
+            border: 1px solid #ccc;
+        }
+        /* Simple loading animation (replace with your preferred one) */
+        #loading-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 25%; /* Example height */
+       
+            color: #555;
+            aspect-ratio: 1/1;
+        }
+        #loading-indicator.loading::after {
+             content: '';
+             display: block;
+             width: 30px;
+             height: 30px;
+             border: 4px solid #262626; /* Light grey */
+             border-top: 4px solid #ffffff; /* Blue */
+             border-radius: 50%;
+             animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
 <body>
 <section>
-    <textarea placeholder="Prompt" name="prompt" id=""></textarea>
-    <textarea placeholder="Parameters" name="parameters" id=""></textarea>
-    <button style="font-family: 'Josefin Slab', serif;  font-size: 1.5em;"  id="generate">Generate</button>
+    <textarea placeholder="Prompt" name="prompt" id="prompt-input"></textarea>
+    <textarea placeholder="Parameters (optional, string or JSON)" name="parameters" id="parameters-input"></textarea>
+    <button style="font-family: 'Josefin Slab', serif;  font-size: 1.5em;" id="generate">Generate</button>
 </section>
     <div class="others">
         <div class="text">Styles And Others</div>
         <div class="styles">
+            <!-- Styles remain the same -->
             <div class="style">Style 1</div>
             <div class="style">Style 2</div>
             <div class="style">Style 3</div>
@@ -25,14 +64,15 @@
             <div class="style">Style 6</div>
             <div class="style">Style 7</div>
         </div>
-        <div class="output">
-            <div class="image">img</div>
-            <div class="image">img</div>
-            <div class="image">img</div>
-            <div class="image">img</div>
-            <div class="image">img</div>
-
+        <div class="output" id="output-container">
+            <!-- Initial placeholder/loading indicator -->
+            <div class="image hidden" id="loading-indicator">Loading...</div>
+            <!-- Generated images will be appended here -->
         </div>
     </div>
+    <div id="lightbox-overlay" class="lightbox-hidden">
+        <img id="lightbox-image" src="" alt="Enlarged image">
+    </div>
+<script src="/static/js/script.js"></script>
 </body>
 </html>
