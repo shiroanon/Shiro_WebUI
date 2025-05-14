@@ -305,5 +305,6 @@ def send_prompt(prompt_input):
        
           
         
-
-send_prompt(input("Enter your prompt: "))
+if __name__ == "__main__":
+    send_prompt(input("Enter your prompt: "))
+    
